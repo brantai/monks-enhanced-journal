@@ -2379,7 +2379,7 @@ export class EnhancedJournalSheet extends JournalPageSheet {
                     const description = chatData?.description?.value ?? item.description;
                     div = $('<div>').addClass("item-summary").append(propertiesElem, levelPriceLabel, `<div class="item-description">${description}</div>`);
                 } else {
-                    div = $(`<div class="item-summary">${(typeof chatData == "string" ? chatData : chatData.description.value ?? chatData.description)}</div>`);
+                    div = $(`<div class="item-summary">${(typeof chatData == "string" ? await TextEditor.enrichHTML(chatData) : chatData.description.value ?? chatData.description)}</div>`);
                     if (typeof chatData !== "string") {
                         let props = $('<div class="item-properties"></div>');
                         chatData.properties.forEach(p => {
